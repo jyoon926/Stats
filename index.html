@@ -22,7 +22,7 @@
             <input type="text" name="variable" id="variable">
 
             <label for="inputType">Input Type</label>
-            <select id="inputType" onchange="setInputType()">
+            <select id="inputType" onchange="SetInputType()">
                 <option value="data">Raw data</option>
                 <!-- <option value="meanstats">Mean and standard deviation</option> -->
                 <option value="medianstats">Five-number summary</option>
@@ -54,9 +54,9 @@
             </div>
 
             <div class="buttons">
-                <a class="button" id="beginAnalysis" onclick="begin()">Begin Analysis</a>
+                <a class="button" id="beginAnalysis" onclick="Begin()">Begin Analysis</a>
                 <!-- <a class="button disabled" id="changeInputs" onclick="deactivate()">Edit Inputs</a> -->
-                <a class="button" id="resetEverything" onclick="ResetAll()()">Reset Everything</a>
+                <a class="button" id="resetEverything" onclick="ResetAll()">Reset Everything</a>
             </div>
 
         </section>
@@ -67,7 +67,7 @@
 
         <div class="options">
             <label for="graphType">Graph Type</label>
-            <select id="graphType" onchange="setGraphType()">
+            <select id="graphType" onchange="SetGraphType()">
                 <option value="boxplot">Boxplot</option>
                 <option value="dotplot">Dotplot</option>
                 <option value="histogram">Histogram</option>

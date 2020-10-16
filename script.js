@@ -1,4 +1,4 @@
-function begin() {
+function Begin() {
     var e = document.getElementById("inputType");
     var s = e.options[e.selectedIndex].text;
     if (s == "Raw data") {
@@ -21,18 +21,18 @@ function begin() {
                 
                 BoxPlot(list);
             
-                document.getElementById("n").innerHTML = n(list);
-                document.getElementById("mean").innerHTML = mean(list).toFixed(3);
-                document.getElementById("sd").innerHTML = sd(list, mean(list)).toFixed(3);
-                document.getElementById("min").innerHTML = min(list);
-                document.getElementById("q1").innerHTML = q1(list);
-                document.getElementById("med").innerHTML = med(list);
-                document.getElementById("q3").innerHTML = q3(list);
-                document.getElementById("max").innerHTML = max(list);
-                document.getElementById("iqr").innerHTML = q3(list) - q1(list);
-            
-                setGraphType();
+                SetGraphType();
                 $('#graphDistribution').css("display", "flex");
+
+                document.getElementById("n").innerHTML = N(list);
+                document.getElementById("mean").innerHTML = Mean(list).toFixed(3);
+                document.getElementById("sd").innerHTML = SD(list, Mean(list)).toFixed(3);
+                document.getElementById("min").innerHTML = Min(list);
+                document.getElementById("q1").innerHTML = Q1(list);
+                document.getElementById("med").innerHTML = Med(list);
+                document.getElementById("q3").innerHTML = Q3(list);
+                document.getElementById("max").innerHTML = Max(list);
+                document.getElementById("iqr").innerHTML = Q3(list) - Q1(list);
                 $('#summaryStatistics').css("display", "flex");
             }
             else {
@@ -52,7 +52,7 @@ function begin() {
         var med = document.getElementById("medInput").value;
         var q3 = document.getElementById("q3Input").value;
         var max = document.getElementById("maxInput").value;
-        if (isNumeric(min) && isNumeric(q1) && isNumeric(med) && isNumeric(q3) && isNumeric(max)) {
+        if (IsNumeric(min) && IsNumeric(q1) && IsNumeric(med) && IsNumeric(q3) && IsNumeric(max)) {
             if (min <= q1 && q1 <= med && med <= q3 && q3 <= max) {
                 BoxPlotFromFive();
                 document.getElementById("boxPlot").style.display = "inline";
@@ -67,19 +67,19 @@ function begin() {
         }
     }
 }
-function isNumeric(str) {
+function IsNumeric(str) {
     if (typeof str != "string") return false // we only process strings!  
     return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
         !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
 }
-function setGraphType() {
+function SetGraphType() {
     var e = document.getElementById("graphType");
     var s = e.options[e.selectedIndex].text;
     if (s == "Boxplot") {
         document.getElementById("boxPlot").style.display = "inline";
     }
 }
-function setInputType() {
+function SetInputType() {
     $('#graphDistribution').css("display", "none");
     $('#summaryStatistics').css("display", "none");
     var e = document.getElementById("inputType");
@@ -151,7 +151,7 @@ function BoxPlot(list) {
         document.getElementById("name").innerHTML = document.getElementById("variable").value;
     }
 
-    var range = max(list) - min(list);
+    var range = Max(list) - Min(list);
     var mag = Math.round(Math.log10(range));
     mag = Math.pow(10, mag - 1);
     var minRange = Math.round(list[0] / mag) * mag;
@@ -164,7 +164,6 @@ function BoxPlot(list) {
 
     var dashes = document.getElementsByClassName("dash");
     var dashNums = document.getElementsByClassName("dashNum");
-    console.log(intervals);
 
     for (i = 0; i < dashes.length; i++) {
         if (i > intervals) {
@@ -178,23 +177,23 @@ function BoxPlot(list) {
 
     var width = 800;
 
-    $("#box-min").css("margin-left", ((min(list) - minRange) / (maxRange - minRange)) * width + "px");
-    $("#box-min-q2").css("width", (((q1(list) - min(list)) / (maxRange - minRange)) * width - 2) + "px");
-    $("#box-q2-med").css("width", (((med(list) - q1(list)) / (maxRange - minRange)) * width - 2) + "px");
-    $("#box-med-q3").css("width", (((q3(list) - med(list)) / (maxRange - minRange)) * width - 2) + "px");
-    $("#box-q3-max").css("width", (((max(list) - q3(list)) / (maxRange - minRange)) * width - 2) + "px");
+    $("#box-min").css("margin-left", ((Min(list) - minRange) / (maxRange - minRange)) * width + "px");
+    $("#box-min-q2").css("width", (((Q1(list) - Min(list)) / (maxRange - minRange)) * width - 2) + "px");
+    $("#box-q2-med").css("width", (((Med(list) - Q1(list)) / (maxRange - minRange)) * width - 2) + "px");
+    $("#box-med-q3").css("width", (((Q3(list) - Med(list)) / (maxRange - minRange)) * width - 2) + "px");
+    $("#box-q3-max").css("width", (((Max(list) - Q3(list)) / (maxRange - minRange)) * width - 2) + "px");
 
 }
 
 function ResetAll() {
     document.getElementById("form").reset();
-    setInputType();
-    setGraphType();
+    SetInputType();
+    SetGraphType();
     $('#graphDistribution').css("display", "none");
     $('#summaryStatistics').css("display", "none");
 }
 
-function sd(list, mean) {
+function SD(list, mean) {
     var n = list.length;
     var sum = 0;
     for (i = 0; i < n; i++) {
@@ -203,10 +202,10 @@ function sd(list, mean) {
     var sd = Math.sqrt(sum / (n - 1));
     return sd;
 }
-function n(list) {
+function N(list) {
     return list.length;
 }
-function mean(list) {
+function Mean(list) {
     var n = list.length;
     var total = 0;
     for (i = 0; i < n; i++) {
@@ -214,20 +213,20 @@ function mean(list) {
     }
     return (total / n);
 }
-function min(list) {
+function Min(list) {
     return list[0];
 }
-function q1(list) {
+function Q1(list) {
     var n = list.length;
     var middle = Math.ceil(n / 2) - 1;
     if (n % 2 == 0) {
-        return med(list.slice(0, middle + 1));
+        return Med(list.slice(0, middle + 1));
     }
     else {
-        return med(list.slice(0, middle));
+        return Med(list.slice(0, middle));
     }
 }
-function med(list) {
+function Med(list) {
     var n = list.length;
     var middle = Math.ceil(n / 2) - 1;
     if (n % 2 == 0) {
@@ -237,20 +236,20 @@ function med(list) {
         return list[middle];
     }
 }
-function q3(list) {
+function Q3(list) {
     var n = list.length;
     var middle = Math.ceil(n / 2) - 1;
     if (n % 2 == 0) {
-        return med(list.slice(middle + 1, n));
+        return Med(list.slice(middle + 1, n));
     }
     else {
-        return med(list.slice(middle + 1, n));
+        return Med(list.slice(middle + 1, n));
     }
 }
-function max(list) {
+function Max(list) {
     return list[list.length - 1];
 }
-function sum(list) {
+function Sum(list) {
     var sum = 0;
     for (i = 0; i < list.length; i++) {
         sum += list[i];
