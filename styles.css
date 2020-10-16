@@ -1,0 +1,410 @@
+@font-face {
+  font-family: 'MonumentGrotesk';
+  src: url("fonts/MonumentGrotesk-Medium.woff2") format("woff2"), url("fonts/MonumentGrotesk-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MonumentGrotesk';
+  src: url("fonts/MonumentGrotesk-Regular.woff2") format("woff2"), url("fonts/MonumentGrotesk-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'circular';
+  src: url(fonts/764604c.woff2) format("woff2"), url(fonts/5b4d068.woff) format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+* {
+  font-family: 'circular';
+  color: #22223b;
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+}
+
+html {
+  overflow-x: hidden;
+  font-size: 18px;
+}
+
+h1 {
+  font-size: 5em;
+  line-height: 1;
+  width: 100%;
+  padding: 80px 20vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-align: center;
+}
+
+h2 {
+  font-size: 3em;
+}
+
+.button {
+  background-color: #22223b;
+  color: white;
+  padding: 7px 20px;
+  border: 2px solid #22223b;
+  -webkit-transition: background-color .3s, color .3s;
+  transition: background-color .3s, color .3s;
+  border-radius: calc(41px / 2);
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: white;
+  color: #22223b;
+}
+
+label {
+  margin-top: 1em;
+}
+
+p {
+  margin-top: 1em;
+}
+
+input[type=text] {
+  all: unset;
+  font-size: 1em;
+  border: 2px solid white;
+  padding: 3px 7px;
+  line-height: 1;
+  margin-top: 5px;
+  width: 500px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: white;
+  -webkit-transition: border .3s;
+  transition: border .3s;
+}
+
+input[type=text]:focus {
+  border: 2px solid #22223b;
+}
+
+select {
+  all: unset;
+  -webkit-appearance: menulist;
+     -moz-appearance: menulist;
+          appearance: menulist;
+  white-space: pre;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1em;
+  border: 2px solid white;
+  padding: 3px;
+  line-height: 1;
+  margin-top: 5px;
+  border-radius: 0 !important;
+  width: 500px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: white;
+  -webkit-transition: border .3s;
+  transition: border .3s;
+}
+
+select:focus {
+  border: 2px solid #22223b;
+  border-radius: 0 !important;
+}
+
+section {
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+.buttons {
+  margin-top: 2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 14px;
+}
+
+.disabled {
+  opacity: .4;
+  pointer-events: none;
+}
+
+.flexColumn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+#fiveNumberSum {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+#fiveNumberSum input {
+  width: 100px !important;
+}
+
+#options {
+  margin-top: 2em;
+  max-width: 500px;
+}
+
+#options .first {
+  margin-top: 0px !important;
+  padding-top: 0px !important;
+}
+
+#options #meanStd {
+  display: none;
+}
+
+#options #fiveNumberSum {
+  display: none;
+}
+
+#graphDistribution {
+  display: none;
+  margin-top: 100px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+}
+
+#graphDistribution select {
+  background-color: white;
+  border: 2px solid #22223b;
+}
+
+#graphDistribution .options {
+  margin-top: 1em;
+}
+
+#graphDistribution #divPlot {
+  margin-top: 3em;
+}
+
+#graphDistribution #divPlot #boxPlot {
+  display: none;
+}
+
+#graphDistribution #divPlot #boxPlot .box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 1em;
+}
+
+#graphDistribution #divPlot #boxPlot .box #box-min, #graphDistribution #divPlot #boxPlot .box #box-q2, #graphDistribution #divPlot #boxPlot .box #box-med, #graphDistribution #divPlot #boxPlot .box #box-q3, #graphDistribution #divPlot #boxPlot .box #box-max {
+  height: 60px;
+  width: 2px;
+  background: #22223b;
+}
+
+#graphDistribution #divPlot #boxPlot .box #box-min-q2, #graphDistribution #divPlot #boxPlot .box #box-q3-max {
+  height: 2px;
+  width: 100px;
+  background: #22223b;
+}
+
+#graphDistribution #divPlot #boxPlot .box #box-q2-med, #graphDistribution #divPlot #boxPlot .box #box-med-q3 {
+  height: 56px;
+  width: 100px;
+  border-top: 2px solid #22223b;
+  border-bottom: 2px solid #22223b;
+  background: #4a4e69;
+}
+
+#graphDistribution #divPlot #boxPlot .axis {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 800px;
+  border-top: 2px solid #22223b;
+}
+
+#graphDistribution #divPlot #boxPlot .axis .dashes {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+#graphDistribution #divPlot #boxPlot .axis .dashes .dash {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#graphDistribution #divPlot #boxPlot .axis .dashes .dash .h {
+  height: 12px;
+  width: 2px;
+  background: #22223b;
+}
+
+#graphDistribution #divPlot #boxPlot .axis .dashes .dash p {
+  margin-top: 2em;
+  position: absolute;
+}
+
+#graphDistribution #divPlot #boxPlot .axis .variable {
+  margin-top: 1.5em;
+}
+
+#summaryStatistics {
+  display: none;
+  margin-top: 100px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+}
+
+#summaryStatistics #spnSummaryStatistics table {
+  margin-top: 1em;
+  border-collapse: collapse;
+}
+
+#summaryStatistics #spnSummaryStatistics table, #summaryStatistics #spnSummaryStatistics th, #summaryStatistics #spnSummaryStatistics td {
+  border: 2px solid #22223b;
+}
+
+#summaryStatistics #spnSummaryStatistics th, #summaryStatistics #spnSummaryStatistics td {
+  padding: 2px 10px;
+  text-align: center;
+}
+
+#wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  min-height: 100vh;
+}
+
+#footer {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  margin-top: 100px;
+  pointer-events: none;
+  padding: 0 20px 20px 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#footer p {
+  line-height: 1;
+  opacity: .7;
+}
+
+#bg {
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: radial-gradient(ellipse at top, #f2e9e4, transparent), radial-gradient(ellipse at bottom, #c9ada7, transparent);
+}
+/*# sourceMappingURL=styles.css.map */

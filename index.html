@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Quantitative Variable, Single Group</title>
+    <link rel="stylesheet" href="https://use.typekit.net/pzk6jka.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="img/icon.svg">
+</head>
+<body>
+
+    <div id="wrapper">
+    <div id="container">
+
+    <h1>One Quantitative Variable, Single Group</h1>
+
+    <form id="form" >
+        <section id="options" class="flexColumn">
+
+            <label for="variable" class="first">Variable Name</label>
+            <input type="text" name="variable" id="variable">
+
+            <label for="inputType">Input Type</label>
+            <select id="inputType" onchange="setInputType()">
+                <option value="data">Raw data</option>
+                <!-- <option value="meanstats">Mean and standard deviation</option> -->
+                <option value="medianstats">Five-number summary</option>
+            </select>
+            
+            <div id="rawData" class="flexColumn">
+                <label for="data">Input Data (separated by spaces or commas)</label>
+                <input type="text" name="data" id="data">
+            </div>
+            <div id="meanStd" class="flexColumn">
+                <label for="meanInput">Mean</label>
+                <input type="text" name="meanInput" id="meanInput">
+                <label for="sdInput">SD</label>
+                <input type="text" name="sdInput" id="sdInput">
+                <label for="nInput">N</label>
+                <input type="text" name="nInput" id="nInput">
+            </div>
+            <div id="fiveNumberSum">
+                <label for="minInput">Min</label>
+                <input type="text" name="minInput" id="minInput">
+                <label for="q1Input">Q1</label>
+                <input type="text" name="q1Input" id="q1Input">
+                <label for="medInput">Median</label>
+                <input type="text" name="medInput" id="medInput">
+                <label for="q3Input">Q3</label>
+                <input type="text" name="q3Input" id="q3Input">
+                <label for="maxInput">Max</label>
+                <input type="text" name="maxInput" id="maxInput">
+            </div>
+
+            <div class="buttons">
+                <a class="button" id="beginAnalysis" onclick="begin()">Begin Analysis</a>
+                <!-- <a class="button disabled" id="changeInputs" onclick="deactivate()">Edit Inputs</a> -->
+                <a class="button" id="resetEverything" onclick="ResetAll()()">Reset Everything</a>
+            </div>
+
+        </section>
+    </form>
+
+    <section id="graphDistribution" class="flexColumn">
+        <h2>Graph Distribution</h2>
+
+        <div class="options">
+            <label for="graphType">Graph Type</label>
+            <select id="graphType" onchange="setGraphType()">
+                <option value="boxplot">Boxplot</option>
+                <option value="dotplot">Dotplot</option>
+                <option value="histogram">Histogram</option>
+                <option value="stemplot">Stemplot</option>
+            </select>
+        </div>
+
+        <div id="divPlot">
+
+            <div id="boxPlot">
+                <div class="box">
+                    <div id="box-min"></div>
+                    <div id="box-min-q2"></div>
+                    <div id="box-q2"></div>
+                    <div id="box-q2-med"></div>
+                    <div id="box-med"></div>
+                    <div id="box-med-q3"></div>
+                    <div id="box-q3"></div>
+                    <div id="box-q3-max"></div>
+                    <div id="box-max"></div>
+                </div>
+                <div class="axis x-axis">
+                    <div class="line"></div>
+                    <div class="dashes">
+                        <div class="dash"><div class="h"></div><p class="dashNum"></p></div>
+                        <div class="dash"><div class="h"></div><p class="dashNum"></p></div>
+                        <div class="dash"><div class="h"></div><p class="dashNum"></p></div>
+                        <div class="dash"><div class="h"></div><p class="dashNum"></p></div>
+                        <div class="dash"><div class="h"></div><p class="dashNum"></p></div>
+                        <div class="dash"><div class="h"></div><p class="dashNum"></p></div>
+                        <div class="dash"><div class="h"></div><p class="dashNum"></p></div>
+                        <div class="dash"><div class="h"></div><p class="dashNum"></p></div>
+                        <div class="dash"><div class="h"></div><p class="dashNum"></p></div>
+                        <div class="dash"><div class="h"></div><p class="dashNum"></p></div>
+                    </div>
+                    <div class="variable" id="name">Variable</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="divStemPlot">
+        </div>
+    </section>
+
+    <section id="summaryStatistics" class="flexColumn">
+        <h2>Summary Statistics</h2>
+        <span id="spnSummaryStatistics">
+            <table>
+                <tbody>
+                    <tr>
+                        <th>n</th>
+                        <th>mean</th>
+                        <th>SD</th>
+                        <th>min</th>
+                        <th>Q<sub>1</sub></th>
+                        <th>med</th>
+                        <th>Q<sub>3</sub></th>
+                        <th>max</th>
+                        <th>IQR</th>
+                    </tr>
+                    <tr>
+                        <td id="n"> </td>
+                        <td id="mean"> </td>
+                        <td id="sd"> </td>
+                        <td id="min"> </td>
+                        <td id="q1"> </td>
+                        <td id="med"> </td>
+                        <td id="q3"> </td>
+                        <td id="max"> </td>
+                        <td id="iqr"> </td>
+                    </tr>
+                </tbody>
+            </table>
+        </span><br>
+    </section>
+
+    </div>
+
+    <div id="footer">
+        <p>© 2020. All rights reserved.</p>
+        <p>Designed and developed by Jacob Yoon</p>
+    </div>
+
+    </div>
+
+    <div id="bg"></div>
+    
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
